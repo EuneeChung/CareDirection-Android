@@ -32,4 +32,19 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation "androidx.recyclerview:recyclerview:1.0.0"
+
+    //MPAndroidChart 라이브러리
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    //ViewPager
+    implementation 'androidx.viewpager2:viewpager2:1.0.0-alpha01'
+
+    //TOP Dialog https://github.com/orhanobut/dialogplus - 참고자료
+    implementation 'com.orhanobut:dialogplus:1.11@aar'
+    //리사이클러뷰
+    implementation "androidx.recyclerview:recyclerview:1.0.0"
+
+
 }
