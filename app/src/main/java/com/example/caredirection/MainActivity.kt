@@ -1,9 +1,11 @@
 package com.example.caredirection
 
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import com.github.mikephil.charting.components.LimitLine
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
@@ -26,12 +28,12 @@ class MainActivity : AppCompatActivity() {
         listData.add(BarEntry(3f,80f))
         listData.add(BarEntry(4f,100f))
         listData.add(BarEntry(5f,40f))
-        listData.add(BarEntry(0f, 55f))
-        listData.add(BarEntry(1f, 20f))
-        listData.add(BarEntry(2f,60f))
-        listData.add(BarEntry(3f,80f))
-        listData.add(BarEntry(4f,120f))
-        listData.add(BarEntry(5f,40f))
+        listData.add(BarEntry(6f, 55f))
+        listData.add(BarEntry(7f, 20f))
+        listData.add(BarEntry(8f,60f))
+        listData.add(BarEntry(9f,80f))
+        listData.add(BarEntry(10f,120f))
+
 
         val listData2 = ArrayList<BarEntry>()
         listData.add(BarEntry(0f, 55f))
@@ -97,6 +99,14 @@ class MainActivity : AppCompatActivity() {
         ll1.labelPosition = LimitLine.LimitLabelPosition.RIGHT_TOP
         ll1.textSize = 10f
 
+        val ll2 = LimitLine(30f, "Minimum Limit")
+        ll2.lineWidth = 4f
+        ll2.enableDashedLine(50f, 20f, 0f)
+        //ll1.enableDashedLine(선의 길이, 선사이의 공간, 0f)
+        //TODO phase는 무엇인가?
+        ll2.labelPosition = LimitLine.LimitLabelPosition.RIGHT_TOP
+        ll2.textSize = 10f
+
         val leftYAxis = chart.axisLeft
         leftYAxis.setAxisMaximum(120f)
         leftYAxis.setAxisMinimum(0f)
@@ -108,6 +118,7 @@ class MainActivity : AppCompatActivity() {
         leftYAxis.setDrawAxisLine(false)
 
         leftYAxis.addLimitLine(ll1)  // 상한선 그리기
+        leftYAxis.addLimitLine(ll2)
 
 
 
@@ -124,13 +135,21 @@ class MainActivity : AppCompatActivity() {
         dataSet.valueTextColor = ContextCompat.getColor(this, android.R.color.black)
 
         val lineData = BarData(dataSet)
+        chart.data = lineData
         chart.setFitBars(true)
-        chart.setTouchEnabled(true)
-        chart.isDragXEnabled=true
+        chart.setTouchEnabled(true)//됨
         chart.isHorizontalScrollBarEnabled=true
+        //chart.isDragXEnabled=true
+        chart.isDragDecelerationEnabled=true
+      // chart.setDragXEnabled(true)
+        //chart.setHorizontalScrollBarEnabled(true)
+        chart.isDoubleTapToZoomEnabled=true//두번터치하고 스크롤은 됨
+        chart.isDragXEnabled=true
         chart.setVisibleXRange(3f,8f)
         chart.animateY(1000) //세로축 에니메이션
-        chart.data = lineData
+       // chart.data = lineData
         chart.invalidate()
+
+
     }
 }

@@ -46,5 +46,9 @@ dependencies {
     //리사이클러뷰
     implementation "androidx.recyclerview:recyclerview:1.0.0"
 
+    //
+    implementation 'com.orhanobut:dialogplus:1.11@aar'
+
+
 
 }
